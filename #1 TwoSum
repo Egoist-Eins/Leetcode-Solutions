@@ -1,0 +1,7 @@
+class Solution:
+    def twoSum(self, nums, target):
+        _mydict = {}
+        for i,ele in enumerate(nums):
+            if _mydict.get(target - ele) is not None and _mydict.get(target - ele) != i:
+                return [_mydict.get(target - ele), i]
+            _mydict[ele] = i  # careful for the location
