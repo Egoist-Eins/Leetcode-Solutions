@@ -1,4 +1,4 @@
-#do not meet the requirement of time complexity log(m+n)
+#the simplest way, do not meet the requirement of time complexity log(m+n)
 
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
