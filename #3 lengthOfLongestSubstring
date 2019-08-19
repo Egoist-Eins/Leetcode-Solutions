@@ -13,3 +13,25 @@ class Solution:
             if cur_length >= length:
                 length = cur_length
         return length
+        
+
+#After learning the Sliding Window
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        if not s:return 0
+        cur_length = 0
+        max_length = 0
+        slide = set()
+        left = 0
+        for i in range(len(s)):
+            cur_length += 1
+        
+            while s[i] in slide:
+                slide.remove(s[left])
+                left += 1
+                cur_length -= 1
+            
+            if cur_length >= max_length:max_length = cur_length
+            slide.add(s[i])
+        return max_length
