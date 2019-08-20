@@ -28,3 +28,24 @@ class Solution:
                     return cur_s
     
         return s[0]
+
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        if len(s) == 0:
+            return ''
+        cur_str = ''
+        re_str = s[0]
+        for i in range(len(s)):
+            my_odd = self.center_spread(s, i, i)
+            my_even = self.center_spread(s, i, i+1)
+        
+            cur_str = my_odd if len(my_odd) > len(my_even) else my_even
+            if len(cur_str) > len(re_str):
+                re_str = cur_str
+        return re_str
+
+    def center_spread(self, s, left, right):
+        while left >= 0 and right < len(s) and s[left] == s[right]:
+            left -= 1
+            right += 1
+        return s[left+1:right]
