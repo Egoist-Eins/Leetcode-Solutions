@@ -1,0 +1,19 @@
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        return str(x) == str(x)[::-1]
+                
+#Follow up:
+#Could you solve it without converting the integer to a string?
+
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        if x == 0:return True
+        if x < 0 or x % 10 == 0:
+            return False
+        rest = x
+        revertednum = 0
+        while rest > revertednum:
+            remainder = rest % 10
+            revertednum = revertednum * 10 + remainder
+            rest = int(rest/10)
+        return rest == revertednum or rest == int(revertednum/10)
