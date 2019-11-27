@@ -1,0 +1,19 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        hash_t = {
+            ")": "(",
+            "]": "[",
+            "}": "{"
+            }
+        stack = []
+        for ele in s:
+            if ele in hash_t:
+                if stack:
+                    top_ele = stack.pop() 
+                else:
+                    top_ele = "#"
+                if hash_t[ele] != top_ele:
+                    return False
+            else:
+                stack.append(ele)
+        return not stack
