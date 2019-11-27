@@ -1,0 +1,22 @@
+class Solution:
+    def totalFruit(self, tree: List[int]) -> int:
+        res = 0
+        cur_res = 0
+        i = 0 
+        hash_t = {}
+        for j, ele in enumerate(tree):
+            if str(ele) in hash_t:
+                hash_t[str(ele)] += 1
+                cur_res += 1
+            elif len(hash_t) < 2:
+                hash_t[str(ele)] = 1
+                cur_res += 1
+            else:     
+                del hash_t[str(tree[i])]
+                cur_res = j - i - 1
+                hash_t[str(ele)] = 1
+                cur_res += 1
+            if j > 0 and tree[j] != tree[j-1]:
+                i = j - 1
+            if cur_res > res: res = cur_res
+        return res
