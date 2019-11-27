@@ -1,0 +1,20 @@
+class Solution:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        L1 = []
+        L2 = []
+        while l1:
+            L1.append(l1.val)
+            l1 = l1.next
+        while l2:
+            L2.append(l2.val)
+            l2 = l2.next
+        L = L1 + L2
+        if len(L) == 0:
+            return None
+        L.sort()
+        res = ListNode(L[0])
+        cur_res = res
+        for i in range(1, len(L)):
+            cur_res.next = ListNode(L[i])
+            cur_res = cur_res.next
+        return res
