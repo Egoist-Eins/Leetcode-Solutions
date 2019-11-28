@@ -1,0 +1,8 @@
+def strStr(self, haystack: str, needle: str) -> int:
+        if needle == "": return 0
+        h_l = len(haystack)
+        n_l = len(needle)
+        for i in range(h_l):
+            if haystack[i] == needle[0] and h_l - i >= n_l and haystack[i:i+n_l] == needle:
+                return i
+        return -1
