@@ -1,0 +1,17 @@
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        res = []
+        l = 0
+        r = 0
+        s = ""
+        def generate(s, l, r):
+            if len(s) == 2 * n:
+                res.append(s)
+                return
+            if l < n:
+                generate(s + "(", l+1, r)
+            if l > r:
+                generate(s + ")", l, r+1)
+        
+        generate(s, l, r)
+        return res
