@@ -1,0 +1,24 @@
+#Time Limit Exceeded
+class Solution:
+    def findSubstring(self, s: str, words: List[str]) -> List[int]:
+        if not s and not words: return []
+        if len(words) == 0: return []
+        res = []
+        l_l = len(words)
+        l_w = len(words[0])
+        l_s = len(s)
+        word_c = collections.Counter(words)
+        temp_list = []
+        for i in range(l_s):
+            temp = s[i:]
+            count = l_l
+            while len(temp) >= l_w and count > 0:
+                count -= 1
+                temp_list.append(temp[:l_w])
+                temp = temp[l_w:]
+            temp_c = collections.Counter(temp_list)
+            if temp_c == word_c:
+                res.append(i)
+            temp_list = []
+        
+        return res
